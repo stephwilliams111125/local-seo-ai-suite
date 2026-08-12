@@ -1,39 +1,12 @@
 import streamlit as st
 from openai import OpenAI
 
-# Configure unified system browser layouts
+# Configure basic page layout
 st.set_page_config(
     page_title="LocalSEO AI Engine",
     page_icon="📍",
     layout="wide"
 )
-
-# Custom High-End Dark Enterprise Styling Matrix
-st.markdown("""
-    <style>
-    .stApp { background-color: #0d1117; color: #c9d1d9; }
-    .card {
-        background-color: #161b22;
-        padding: 25px;
-        border-radius: 8px;
-        border: 1px solid #30363d;
-        margin-bottom: 20px;
-    }
-    .stButton>button {
-        background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
-        color: white;
-        border: none;
-        border-radius: 6px;
-        padding: 12px;
-        font-weight: bold;
-        width: 100%;
-    }
-    .stButton>button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(46,160,67,0.3);
-    }
-    </style>
-""", unsafe_allowed_html=True)
 
 # Main Structural Sidebar Configurator
 st.sidebar.title("⚙️ System Control Panel")
@@ -56,7 +29,6 @@ st.markdown("Automate local business authority optimization. Instantly draft str
 tab1, tab2 = st.tabs(["💬 Reputation Management Engine", "✍️ Geo-Targeted Blog Factory"])
 
 with tab1:
-    st.markdown('<div class="card">', unsafe_allowed_html=True)
     st.subheader("💡 Automated Reputation Success Manager")
     
     col1, col2 = st.columns(2)
@@ -69,7 +41,6 @@ with tab1:
     customer_review = st.text_area("Raw Review Feedback Copy", placeholder="Paste the feedback text retrieved from Google Maps or Yelp platforms here...")
     
     submit_review = st.button("Execute Strategic Response Generation")
-    st.markdown('</div>', unsafe_allowed_html=True)
     
     if submit_review:
         if not api_key_input:
@@ -103,7 +74,6 @@ with tab1:
                     st.error(f"Processing Deficit Encountered: {str(e)}")
 
 with tab2:
-    st.markdown('<div class="card">', unsafe_allowed_html=True)
     st.subheader("🚀 Hyper-Local Search Engine Optimization Factory")
     
     col3, col4 = st.columns(2)
@@ -113,7 +83,6 @@ with tab2:
         target_keyword = st.text_input("Core High-Value Commercial Intent Keyword", placeholder="e.g., Emergency Brake Replacement")
         
     submit_seo = st.button("Synthesize Location-Optimized Article Architecture")
-    st.markdown('</div>', unsafe_allowed_html=True)
     
     if submit_seo:
         if not api_key_input:
@@ -142,3 +111,4 @@ with tab2:
                     st.download_button("Export Deployment Markdown Asset (.md)", seo_output, file_name="local_seo_article.md")
                 except Exception as e:
                     st.error(f"Processing Deficit Encountered: {str(e)}")
+
