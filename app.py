@@ -9,16 +9,16 @@ st.set_page_config(
 )
 
 # Custom High-End Dark Enterprise Styling Matrix
-st.markdown(\"\"\"
+st.markdown("""
     <style>
-    .stApp { background-color: #0d1117; color: #c9d1d9; \}
+    .stApp { background-color: #0d1117; color: #c9d1d9; }
     .card {
         background-color: #161b22;
         padding: 25px;
         border-radius: 8px;
         border: 1px solid #30363d;
         margin-bottom: 20px;
-    \}
+    }
     .stButton>button {
         background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
         color: white;
@@ -27,13 +27,13 @@ st.markdown(\"\"\"
         padding: 12px;
         font-weight: bold;
         width: 100%;
-    \}
+    }
     .stButton>button:hover {
         transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(46,160,67,0.3);
-    \}
+    }
     </style>
-\"\"\", unsafe_allowed_html=True)
+""", unsafe_allowed_html=True)
 
 # Main Structural Sidebar Configurator
 st.sidebar.title("⚙️ System Control Panel")
@@ -41,12 +41,12 @@ st.sidebar.markdown("---")
 api_key_input = st.sidebar.text_input("Enter OpenAI API Key", type="password", help="Powers the underlying natural language model layers.")
 selected_model = st.sidebar.selectbox("AI Processing Brain", ["gpt-4o-mini", "gpt-4o"])
 
-st.sidebar.markdown(\"\"\"
+st.sidebar.markdown("""
 ### 💰 Commercial Valuation Profile:
 - **Resell Ready**: Ready to be white-labeled under independent corporate branding.
 - **Zero Fixed Overhead**: Operating architecture scales free via local API token mapping.
 - **Deployment Status**: Production-stable script structure.
-\"\"\")
+""")
 
 # Interface Header Framework
 st.title("📍 LocalSEO AI & Review Responder Suite")
@@ -84,22 +84,13 @@ with tab1:
                         "You are an elite Public Relations Director specializing in brand management "
                         "and local enterprise customer satisfaction pipelines."
                     )
-                    user_prompt = f\"\"\"
-                    Draft a context-aware strategic public response for this local business review framework:
-                    Business Profile: {biz_name\} ({biz_type\})
-                    Rating Scale: {star_rating\}
-                    Feedback Context: {customer_review\}
-                    
-                    Operational Protocols:
-                    If review context matches a low score (1 star): Be deeply professional and empathetic. Apologize for the inconvenience caused without legally assuming liability. Provide a generic offline resolution pathway (e.g., support@business.com) to neutralize the visibility of the problem.
-                    If review context matches a high score (5 stars): Be exceptionally appreciative. Enthusiastically thank the patron by name if available, and seamlessly embed one of the core service offerings back into the copy to boost local map-pack keyword density.
-                    \"\"\"
+                    user_prompt = f"Draft a context-aware strategic public response for this local business review framework:\nBusiness Profile: {biz_name} ({biz_type})\nRating Scale: {star_rating}\nFeedback Context: {customer_review}\n\nOperational Protocols:\nIf review context matches a low score (1 star): Be deeply professional and empathetic. Apologize for the inconvenience caused without legally assuming liability. Provide a generic offline resolution pathway (e.g., support@business.com) to neutralize the visibility of the problem.\nIf review context matches a high score (5 stars): Be exceptionally appreciative. Enthusiastically thank the patron by name if available, and seamlessly embed one of the core service offerings back into the copy to boost local map-pack keyword density."
                     
                     response = client.chat.completions.create(
                         model=selected_model,
                         messages=[
-                            {"role": "system", "content": system_prompt\},
-                            {"role": "user", "content": user_prompt\}
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt}
                         ],
                         temperature=0.7
                     )
@@ -109,7 +100,7 @@ with tab1:
                     st.info(output_text)
                     st.download_button("Download Response Script (.txt)", output_text, file_name="local_review_response.txt")
                 except Exception as e:
-                    st.error(f"Processing Deficit Encountered: {str(e)\}")
+                    st.error(f"Processing Deficit Encountered: {str(e)}")
 
 with tab2:
     st.markdown('<div class="card">', unsafe_allowed_html=True)
@@ -134,24 +125,13 @@ with tab2:
                 try:
                     client = OpenAI(api_key=api_key_input)
                     seo_system_prompt = "You are a master local search engine optimization strategist specializing in geo-targeted visibility patterns."
-                    seo_user_prompt = f\"\"\"
-                    Generate a fully structured local landing page copy layout built to convert localized query traffic.
-                    Target Location: {target_city\}
-                    Target Commercial Keyword: {target_keyword\}
-                    
-                    Structural Architecture Constraints:
-                    - Formulate an unmissable H1 Headline naturally containing both the exact keyword and city target.
-                    - Develop an engaging opening narrative focusing directly on localized consumer problems.
-                    - Build a structured 3-point value analysis demonstrating explicit mechanical or operational superiority.
-                    - Ensure natural geographic keyword density without triggers that flag search engine crawlers.
-                    - Provide a highly direct transactional Call to Action (CTA) block.
-                    \"\"\"
+                    seo_user_prompt = f"Generate a fully structured local landing page copy layout built to convert localized query traffic.\nTarget Location: {target_city}\nTarget Commercial Keyword: {target_keyword}\n\nStructural Architecture Constraints:\n- Formulate an unmissable H1 Headline naturally containing both the exact keyword and city target.\n- Develop an engaging opening narrative focusing directly on localized consumer problems.\n- Build a structured 3-point value analysis demonstrating explicit mechanical or operational superiority.\n- Ensure natural geographic keyword density without triggers that flag search engine crawlers.\n- Provide a highly direct transactional Call to Action (CTA) block."
                     
                     response = client.chat.completions.create(
                         model=selected_model,
                         messages=[
-                            {"role": "system", "content": seo_system_prompt\},
-                            {"role": "user", "content": seo_user_prompt\}
+                            {"role": "system", "content": seo_system_prompt},
+                            {"role": "user", "content": seo_user_prompt}
                         ],
                         temperature=0.6
                     )
@@ -159,6 +139,6 @@ with tab2:
                     seo_output = response.choices.message.content
                     st.success("✅ Local SEO Strategy Framework Generated!")
                     st.markdown(seo_output)
-                    st.download_button("Export Deployment Markdown Asset (.md)", seo_output, file_name=f"local_seo_{target_city.lower().replace(' ', '_')\}.md")
+                    st.download_button("Export Deployment Markdown Asset (.md)", seo_output, file_name="local_seo_article.md")
                 except Exception as e:
-                    st.error(f"Processing Deficit Encountered: {str(e)\}")
+                    st.error(f"Processing Deficit Encountered: {str(e)}")
